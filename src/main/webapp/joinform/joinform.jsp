@@ -641,7 +641,6 @@ margin-bottom: 30px;
                     var regexName = /^[가-힣]+$/;
                     var regexPhone = /^010[0-9]{8}$/;
                     var regexEmail = /^(?=.{1,30}$)[^@\s]+@[^@\s]+\.[^@\s]+$/;
-/;
     
                     var name = $("#name").val();
                     var id = $("#id").val();
