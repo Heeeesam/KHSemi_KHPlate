@@ -214,6 +214,7 @@ textarea {
    font-weight:bold;
    font-size:14px;
    color:blue;
+   
 }
 </style>
 
@@ -330,19 +331,19 @@ textarea {
 		<!-- 댓글목록란 -->
 		<c:if test="${replyList!=null}">
 			<c:forEach var="i" items="${replyList}">
+			
 				<form action="/update.fullreviewreply" method="post">
+					<br>
 					<div class="re_List_Container" style="margin-left:10px;">
 						<input type="text" class="re_list_writer" value="${i.userid }"
 							style="height: 50%;" readonly>
+						<div class="text-end">
 						<input type="text" value="${i.body }" class="re_list_body"
 							name="re_list_body" style="width: 100%; height: 50%; margin-bottom:20px;" readonly>
 							<c:choose>
 							<c:when test="${sessionScope.userId eq i.userid}">
-								<hr>
-								<div class="text-end">
 								<button class="re_list_updbtn" type="button">수정</button>
 								<button class="re_list_delbtn" type="button" commentid="${i.commentid }" reviewid="${contents.reviewID }">삭제</button>
-								</div>
 								<input type="submit" value="수정완료" class="re_list_updCompBtn"
 									style="display: none">
 
@@ -352,8 +353,11 @@ textarea {
 								<input type="text" class="commentid" id="commentid"
 									name="commentid" value="${i.commentid }" style="display: none">
 
+								<hr>
+								
 							</c:when>
 						</c:choose>
+						</div>
 					</div>
 				</form>
 				<br>
@@ -421,7 +425,7 @@ textarea {
 			$(this).css("display", "none");
 			$(this).next().css("display", "none");
 			$(this).next().next().css("display", "inline-block");
-			$(this).next().next().next().next().next().removeAttr("readonly");
+			$(this).prev().removeAttr("readonly");
 		})
 
 		$(".re_list_delbtn").on(

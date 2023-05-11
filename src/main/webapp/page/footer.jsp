@@ -17,7 +17,6 @@
    text-align: center;
    padding: 10px;
    margin-top: 200px;
-   max-width: 1920px;
    font-size: 13px;
 }
 

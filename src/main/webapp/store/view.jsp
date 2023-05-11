@@ -827,9 +827,6 @@
                              }else if(!($("input[name='address']").val())){
                           	   alert("가게 주소 값을 빈 값으로 둘 수 없습니다.");
                           	   return false;
-                             }else if(!($("#intro_editor").val())){
-                          	   alert("가게 설명 값을 빈 값으로 둘 수 없습니다.");
-                          	   return false;
                              }
                            
                            for(let i = 0; i < imgs.length; i++){
