@@ -158,6 +158,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+.idea/**
 
+KHSemi_KHPlate.iml
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,windows,git
