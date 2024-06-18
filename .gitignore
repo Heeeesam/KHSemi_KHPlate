@@ -155,5 +155,7 @@ $RECYCLE.BIN/
 KHSemi_KHPlate.iml
 lib
 web
+out
+WEB-INF
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,windows,git
