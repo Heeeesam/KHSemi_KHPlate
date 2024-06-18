@@ -157,5 +157,6 @@ lib
 web
 out
 WEB-INF
+META-INF
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,windows,git
