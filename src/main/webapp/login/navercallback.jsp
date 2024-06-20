@@ -15,8 +15,8 @@
   <script>
 	const naverLogin = new naver.LoginWithNaverId(
 	        {
-	            clientId: "Mm9YQgxstdSEuf5xt0jg",
-	            callbackUrl: "http://khplate.duckdns.org:8090/login/navercallback.jsp",
+	            clientId: "z2MQyFgP3127wAQkHVmi",
+	            callbackUrl: "http://ec2-15-165-121-165.ap-northeast-2.compute.amazonaws.com//login/navercallback.jsp",
 	            loginButton: {color: "green", type: 2, height: 40},
 	            isPopup: false,
 	    	    callbackHandle: true

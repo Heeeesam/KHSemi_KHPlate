@@ -67,7 +67,7 @@ public class MembersController extends HttpServlet {
 				String userid = (String) request.getAttribute("userid");
 				String email = (String) request.getAttribute("email");
 
-				String host = "http://khplate.duckdns.org:8090/";
+				String host = "http://ec2-15-165-121-165.ap-northeast-2.compute.amazonaws.com/";
 				String from = "khplatesemi@gmail.com";
 				String to = email;
 				String subject ="이메일 인증 입니다";

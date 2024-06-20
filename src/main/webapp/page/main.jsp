@@ -154,7 +154,7 @@
 		      		const naverLogin = new naver.LoginWithNaverId(
 		   		        {
 		   		            clientId: "Mm9YQgxstdSEuf5xt0jg",
-		   		            callbackUrl: "http://localhost/login/login.jsp",
+		   		            callbackUrl: "http://ec2-15-165-121-165.ap-northeast-2.compute.amazonaws.com//login/login.jsp",
 		   		            loginButton: {color: "green", type: 2, height: 40},
 		   		            isPopup: false,
 		   		    	    callbackHandle: true
