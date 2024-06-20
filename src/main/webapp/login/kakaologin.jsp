@@ -19,7 +19,7 @@
 	integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx"
 	crossorigin="anonymous"></script>
 <script>
-  Kakao.init('25e12e36964674d52a9931b02d3b7cc1'); // ì¬ì©íë ¤ë ì±ì JavaScript í¤ ìë ¥
+  Kakao.init('2504febed8c67836e8db1a31bda054e9'); // ì¬ì©íë ¤ë ì±ì JavaScript í¤ ìë ¥
 </script>
 </head>
 <body>

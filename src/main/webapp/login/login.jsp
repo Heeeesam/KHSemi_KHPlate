@@ -477,7 +477,7 @@ label input[type="checkbox"] {
 	//카카오 로그인
 	
 	function kakaoLogin() {
-		Kakao.init('25e12e36964674d52a9931b02d3b7cc1'); //발급받은 키 중 javascript키를 사용해준다.
+		Kakao.init('2504febed8c67836e8db1a31bda054e9'); //발급받은 키 중 javascript키를 사용해준다.
 		console.log(Kakao.isInitialized()); // sdk초기화여부판단
 		
 		Kakao.Auth.login({
