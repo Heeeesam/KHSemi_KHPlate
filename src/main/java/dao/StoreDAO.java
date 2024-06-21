@@ -178,7 +178,7 @@ public class StoreDAO {
 		int record_total_count = getSearchdStore_RecordCount_BySearchBox(search,food_category);
 		int record_count_per_page = 0;
 		int navi_count_per_page = 0;
-		System.out.println("리스트 전체 글 개수 : "+record_total_count);
+//		System.out.println("리스트 전체 글 개수 : "+record_total_count);
 		if(searchedBy.equals("mainSearch")) {
 			record_count_per_page = Settings.SEARCH_STORE_RECORD_COUNT_PER_PAGE; // 15
 			navi_count_per_page = Settings.SEARCH_STORE_NAVI_COUNT_PER_PAGE; // 10
@@ -301,7 +301,7 @@ public class StoreDAO {
 		try(	Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 
-			System.out.println("검색어 : "+search);
+//			System.out.println("검색어 : "+search);
 			pstat.setString(1,"%"+search+"%");
 
 			if(cost_range.equals("")) {
@@ -312,7 +312,6 @@ public class StoreDAO {
 
 			if(food_category_korean.equals("true")) {
 				pstat.setString(3, "한식");
-				System.out.println("한식 확인");
 			}else {
 				pstat.setString(3, "");
 			}
@@ -376,7 +375,7 @@ public class StoreDAO {
 				food_category_chinese, food_category_japanese, food_category_asian, food_category_fastfood, food_category_dessert_drink, food_category_etc);
 		int record_count_per_page = 0;
 		int navi_count_per_page = 0;
-		System.out.println("리스트 전체 글 개수 : "+record_total_count);
+//		System.out.println("리스트 전체 글 개수 : "+record_total_count);
 		if(searchedBy.equals("mainSearch")) {
 			record_count_per_page = Settings.SEARCH_STORE_RECORD_COUNT_PER_PAGE; // 15
 			navi_count_per_page = Settings.SEARCH_STORE_NAVI_COUNT_PER_PAGE; // 10

@@ -41,7 +41,7 @@ public class FullReviewController extends HttpServlet {
 		response.setContentType("text/html; charset=utf8;");
 
 		String cmd = request.getRequestURI();
-		System.out.println(cmd);
+//		System.out.println(cmd);
 		FullReviewDAO frdao = FullReviewDAO.getInstance();
 		Gson gson = new Gson();
 		
@@ -50,7 +50,7 @@ public class FullReviewController extends HttpServlet {
 			if(cmd.equals("/write.fullreview")) {
 				String realPath = request.getServletContext().getRealPath("FullReview");
 				int maxSize = 1024 * 1024 * 10;
-				System.out.println(realPath);
+//				System.out.println(realPath);
 				File realPathFile = new File(realPath);
 				if(!realPathFile.exists()) {
 					realPathFile.mkdir();
@@ -85,7 +85,7 @@ public class FullReviewController extends HttpServlet {
 				}
 				
 				int reviewId = frdao.newReviewId();
-				System.out.println("방금작성한 리뷰" + reviewId);
+//				System.out.println("방금작성한 리뷰" + reviewId);
 
 				Enumeration<String> names = multi.getFileNames();
 

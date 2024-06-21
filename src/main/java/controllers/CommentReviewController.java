@@ -118,13 +118,13 @@ public class CommentReviewController extends HttpServlet {
 					currentpage = Integer.parseInt(request.getParameter("cpage"));
 				}
 				
-				System.out.println("현재 페이지 : "+currentpage);
+//				System.out.println("현재 페이지 : "+currentpage);
 				
 				int end_Record_Row_Num = currentpage * Settings.MYPAGE_LIST_RECORD_COUNT_PER_PAGE;
 				int start_Record_Row_Num = end_Record_Row_Num - (Settings.MYPAGE_LIST_RECORD_COUNT_PER_PAGE-1);
 				
-				System.out.println("시작 번호 : "+start_Record_Row_Num);
-				System.out.println("끝 번호 : "+end_Record_Row_Num);
+//				System.out.println("시작 번호 : "+start_Record_Row_Num);
+//				System.out.println("끝 번호 : "+end_Record_Row_Num);
 				
 				String writeMyCommentList = CommentReviewDAO.getInstance().selectwriteCommentListToJSP(userno, start_Record_Row_Num, end_Record_Row_Num);
 				String writeMyCommentNavi = CommentReviewDAO.getInstance().selectwriteCommentNaviToJSP(currentpage, userno);

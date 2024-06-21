@@ -229,7 +229,7 @@ public class FullReviewDAO {
 		int record_count_per_page = Settings.SEARCH_FULLREVIEW_RECORD_COUNT_PER_PAGE; // 15
 		int navi_count_per_page = Settings.SEARCH_FULLREVIEW_NAVI_COUNT_PER_PAGE; // 10
 
-		System.out.println("리스트 전체 글 개수 : "+record_total_count);
+//		System.out.println("리스트 전체 글 개수 : "+record_total_count);
 
 		int page_total_count = 0;
 
@@ -386,7 +386,7 @@ public class FullReviewDAO {
 		int record_count_per_page = Settings.MYPAGE_LIST_RECORD_COUNT_PER_PAGE; // 10
 		int navi_count_per_page = Settings.MYPAGE_LIST_NAVI_COUNT_PER_PAGE; // 10
 
-		System.out.println("리스트 전체 글 개수 : "+record_total_count);
+//		System.out.println("리스트 전체 글 개수 : "+record_total_count);
 
 		int page_total_count = 0;
 

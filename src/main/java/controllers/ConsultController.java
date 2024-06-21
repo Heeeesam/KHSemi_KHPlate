@@ -40,7 +40,7 @@ public class ConsultController extends HttpServlet {
 			if(cmd.equals("/register.consult")) {
 				String realPath = request.getServletContext().getRealPath("consult");
 				int maxSize = 1024 * 1024 * 10; //10Mb
-				System.out.println(realPath);
+//				System.out.println(realPath);
 				File realPathFile = new File(realPath);
 				if(!realPathFile.exists()) {
 					realPathFile.mkdir();
@@ -151,13 +151,13 @@ public class ConsultController extends HttpServlet {
 					currentpage = Integer.parseInt(request.getParameter("cpage"));
 				}
 
-				System.out.println("현재 페이지 : "+currentpage);
+//				System.out.println("현재 페이지 : "+currentpage);
 
 				int end_Record_Row_Num = currentpage * Settings.MYPAGE_LIST_RECORD_COUNT_PER_PAGE;
 				int start_Record_Row_Num = end_Record_Row_Num - (Settings.MYPAGE_LIST_RECORD_COUNT_PER_PAGE-1);
 
-				System.out.println("시작 번호 : "+start_Record_Row_Num);
-				System.out.println("끝 번호 : "+end_Record_Row_Num);
+//				System.out.println("시작 번호 : "+start_Record_Row_Num);
+//				System.out.println("끝 번호 : "+end_Record_Row_Num);
 
 				String myConsultList = ConsultDAO.getInstance().selectMyConsultList(userno, start_Record_Row_Num, end_Record_Row_Num);
 				String myConsultNavi = ConsultDAO.getInstance().selectMyConsultNaviToJSP(currentpage, userno);

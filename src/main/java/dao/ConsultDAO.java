@@ -266,7 +266,7 @@ public class ConsultDAO {
 					String reply = rs.getString("reply");
 					result.add(new ConsultDTO(consultID,title,"",0,writedate,category,reply));
 				}
-				System.out.println("리스트 : "+result.size());
+//				System.out.println("리스트 : "+result.size());
 				return selectMyConsultListToJSP(result);
 			}
 		}
@@ -297,7 +297,7 @@ public class ConsultDAO {
 		int record_count_per_page = Settings.MYPAGE_LIST_RECORD_COUNT_PER_PAGE; // 10
 		int navi_count_per_page = Settings.MYPAGE_LIST_NAVI_COUNT_PER_PAGE; // 10
 		
-		System.out.println("리스트 전체 글 개수 : "+record_total_count);
+//		System.out.println("리스트 전체 글 개수 : "+record_total_count);
 
 		int page_total_count = 0;
 
