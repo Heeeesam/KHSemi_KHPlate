@@ -73,7 +73,9 @@ public class MembersController extends HttpServlet {
 				String userid = (String) request.getAttribute("userid");
 				String email = (String) request.getAttribute("email");
 
-				String host = "http://localhost/";
+				String HOSTING_URL = request.getServletContext().getInitParameter("HOSTING_URL");
+				String host = HOSTING_URL == null || HOSTING_URL.isEmpty() ? "http://localhost/" : HOSTING_URL;
+//				String host = "http://localhost/";
 				String from = "khplatesemi@gmail.com";
 				String to = email;
 				String subject ="이메일 인증 입니다";

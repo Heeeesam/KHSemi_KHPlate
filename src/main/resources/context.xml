@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource
+            name="jdbc/ora"
+            type="javax.sql.DataSource"
+            username="KHPLATE"
+            password="KHPLATE"
+            driverClassName="oracle.jdbc.driver.OracleDriver"
+            url="jdbc:oracle:thin:@localhost:1521:xe"
+            initialSize="5"
+    />
+
+</Context>

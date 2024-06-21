@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!-- Servlet 내 Filter 설정 -->
+    <filter>
+        <filter-name>configFilter</filter-name>
+        <filter-class>commons.ConfigFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>configFilter</filter-name>
+        <url-pattern>/*</url-pattern> <!-- URL 패턴을 필요에 따라 조정 -->
+    </filter-mapping>
+
+
+    <!-- 전역 JSTl 변수 생성-->
+    <!-- 현재 페이지 호스팅 URL -->
+    <context-param>
+        <param-name>HOSTING_URL</param-name>
+        <param-value>http://localhost/</param-value>
+    </context-param>
+    <!-- 카카오 관련 APP키 -->
+    <context-param>
+        <param-name>KAKAO_APP_KEY</param-name>
+        <param-value>2504febed8c67836e8db1a31bda054e9</param-value>
+    </context-param>
+    <!-- 네이버 로그인 ClientId-->
+    <context-param>
+        <param-name>NAVER_CLIENT_ID</param-name>
+        <param-value>z2MQyFgP3127wAQkHVmi</param-value>
+    </context-param>
+
+
+    <!-- 시작 페이지 설정 -->
+    <welcome-file-list>
+        <welcome-file>page/main.jsp</welcome-file>
+    </welcome-file-list>
+</web-app> 

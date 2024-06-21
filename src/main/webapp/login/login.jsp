@@ -477,7 +477,8 @@ label input[type="checkbox"] {
 	//카카오 로그인
 	
 	function kakaoLogin() {
-		Kakao.init('2504febed8c67836e8db1a31bda054e9'); //발급받은 키 중 javascript키를 사용해준다.
+		let KAKAO_APP_KEY = '${pageContext.servletContext.getInitParameter('KAKAO_APP_KEY')}';
+		Kakao.init(KAKAO_APP_KEY); //발급받은 키 중 javascript키를 사용해준다.
 		console.log(Kakao.isInitialized()); // sdk초기화여부판단
 		
 		Kakao.Auth.login({
@@ -571,7 +572,7 @@ label input[type="checkbox"] {
    //      }
    //  );
    //  naverLogin.init();
-    
+
     //$("#naverIdLogin_loginButton").click(function(event){
    //  $("#naverIdLogin_loginButton").on("click", function(event){
    //  	naverLogin.getLoginStatus(function (status) {
@@ -604,12 +605,12 @@ label input[type="checkbox"] {
    //          }
    //      });
    //  });
-    
+
    //  function naverLogout() {
    //      naverLogin.logout();
    //    	location.replace("/login/login.jsp");
    //  }
-	
+
 	// Form Validation
 
    $("#signupBtn").on("click",function(){
