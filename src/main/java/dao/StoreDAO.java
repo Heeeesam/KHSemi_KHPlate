@@ -584,7 +584,7 @@ public class StoreDAO {
 		int record_count_per_page = Settings.MYPAGE_LIST_RECORD_COUNT_PER_PAGE;
 		int navi_count_per_page = Settings.MYPAGE_LIST_NAVI_COUNT_PER_PAGE;
 
-		System.out.println(record_total_count);
+//		System.out.println(record_total_count);
 
 		int page_total_count = 0;
 

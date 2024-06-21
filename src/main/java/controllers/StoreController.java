@@ -106,7 +106,7 @@ public class StoreController extends HttpServlet {
 			}else if(cmd.equals("/register.store")) {
 				String realPath = request.getServletContext().getRealPath("store");
 				int maxSize = 1024 * 1024 * 10; //10Mb
-				System.out.println(realPath);
+//				System.out.println(realPath);
 				File realPathFile = new File(realPath);
 				if(!realPathFile.exists()) {
 					realPathFile.mkdir();
@@ -177,7 +177,7 @@ public class StoreController extends HttpServlet {
 			}else if(cmd.equals("/updatePhoto.store")){
 				String realPath = request.getServletContext().getRealPath("store");
 				int maxSize = 1024 * 1024 * 10; //10Mb
-				System.out.println(realPath);
+//				System.out.println(realPath);
 				File realPathFile = new File(realPath);
 				if(!realPathFile.exists()) {
 					realPathFile.mkdir();
@@ -257,7 +257,7 @@ public class StoreController extends HttpServlet {
 
 			// 일반 검색 controller
 			else if(cmd.equals("/searchStoreBySearchBox.store")) {
-				System.out.println("일반 검색");
+//				System.out.println("일반 검색");
 				String search = "";
 				search = SecurityUtils.XSSCheck(search);
 				String searchedBy = "";
@@ -277,7 +277,7 @@ public class StoreController extends HttpServlet {
 					request.getSession().setAttribute("searchedBy", searchedBy);
 				}
 
-				System.out.println("검색경로 : "+searchedBy);
+//				System.out.println("검색경로 : "+searchedBy);
 
 				if(request.getParameter("search")!=null) {
 					search = request.getParameter("search");
@@ -285,7 +285,7 @@ public class StoreController extends HttpServlet {
 					search = "";
 				}
 
-				System.out.println("검색어 : "+search);
+//				System.out.println("검색어 : "+search);
 
 				if(request.getParameter("food_category")!=null) {
 					food_category = request.getParameter("food_category");
@@ -293,7 +293,7 @@ public class StoreController extends HttpServlet {
 					food_category = "";
 				}
 
-				System.out.println("카테고리 접근 : "+food_category);
+//				System.out.println("카테고리 접근 : "+food_category);
 
 				if(request.getParameter("cpage")!=null) {
 					currentpage = Integer.parseInt(request.getParameter("cpage"));
@@ -301,7 +301,7 @@ public class StoreController extends HttpServlet {
 					currentpage = 1;
 				}
 				
-				System.out.println("현재 페이지 : "+currentpage);
+//				System.out.println("현재 페이지 : "+currentpage);
 
 				// 검색방식에 따라 네비 갯수 변경
 				if(searchedBy.equals("mainSearch")) {
@@ -312,28 +312,28 @@ public class StoreController extends HttpServlet {
 					start_Record_Row_Num = end_Record_Row_Num - (Settings.SEARCH_STORE_TO_MAP_RECORD_COUNT_PER_PAGE-1);
 				}
 
-				System.out.println("시작넘버 : "+start_Record_Row_Num);
-				System.out.println("끝넘버 : "+end_Record_Row_Num);
+//				System.out.println("시작넘버 : "+start_Record_Row_Num);
+//				System.out.println("끝넘버 : "+end_Record_Row_Num);
 
 				List<StoreDTO> search_store_list = StoreDAO.getInstance().searchStore_BySearchBox(search, start_Record_Row_Num, end_Record_Row_Num,food_category);
 				String search_store_list_navi = StoreDAO.getInstance().getNavi_BySearchBox(currentpage,search,searchedBy,food_category);
 				// 리스트 썸네일 추가
 				ArrayList<PhotoDTO> search_store_imgList = PhotoDAO.getInstance().selectSearchStoreThumbnailByStoreID(search_store_list);
 
-				System.out.println("리스트 사이즈 : "+search_store_list.size());
-				System.out.println("사진 사이즈 : "+search_store_imgList.size());
+//				System.out.println("리스트 사이즈 : "+search_store_list.size());
+//				System.out.println("사진 사이즈 : "+search_store_imgList.size());
 
 				for(StoreDTO s : search_store_list) {
-					System.out.println(s.getName());
+//					System.out.println(s.getName());
 				}
-				System.out.println("===================");
+//				System.out.println("===================");
 
 				// 즐겨찾기 여부 확인
 				int userno = 0;
 				if(request.getSession().getAttribute("userno")!=null) {
 					userno = (int) request.getSession().getAttribute("userno");
 				}
-				System.out.println("유저넘버 : "+userno);
+//				System.out.println("유저넘버 : "+userno);
 
 				List<FavoritePageDTO> Favorite_list = FavoriteStoreDAO.getInstance().isFavoriteStore(search_store_list,userno);
 
@@ -371,7 +371,7 @@ public class StoreController extends HttpServlet {
 
 			// 필터 적용 검색 controller
 			else if(cmd.equals("/searchStoreBySearchFilter.store")) {
-				System.out.println("필터 검색");
+//				System.out.println("필터 검색");
 
 				String search = "";
 				String searchedBy = "";
@@ -500,17 +500,17 @@ public class StoreController extends HttpServlet {
 					request.getSession().setAttribute("food_category_etc", food_category_etc);
 				}
 
-				System.out.println("검색경로 : "+searchedBy);
-				System.out.println("정렬방식 : "+sortMethod);
-				System.out.println("가격 : "+cost_range);
-				System.out.println("한식 : "+food_category_korean);
-				System.out.println("양식 : "+food_category_western);
-				System.out.println("중식 : "+food_category_chinese);
-				System.out.println("일식 : "+food_category_japanese);
-				System.out.println("아시안 : "+food_category_asian);
-				System.out.println("패스트푸드 : "+food_category_fastfood);
-				System.out.println("디저트/음료 : "+food_category_dessert_drink);
-				System.out.println("기타 : "+food_category_etc);
+//				System.out.println("검색경로 : "+searchedBy);
+//				System.out.println("정렬방식 : "+sortMethod);
+//				System.out.println("가격 : "+cost_range);
+//				System.out.println("한식 : "+food_category_korean);
+//				System.out.println("양식 : "+food_category_western);
+//				System.out.println("중식 : "+food_category_chinese);
+//				System.out.println("일식 : "+food_category_japanese);
+//				System.out.println("아시안 : "+food_category_asian);
+//				System.out.println("패스트푸드 : "+food_category_fastfood);
+//				System.out.println("디저트/음료 : "+food_category_dessert_drink);
+//				System.out.println("기타 : "+food_category_etc);
 
 
 				if(request.getParameter("search")!=null) {
@@ -523,7 +523,7 @@ public class StoreController extends HttpServlet {
 					request.getSession().setAttribute("search", search);
 				}
 
-				System.out.println("검색어 : "+search);
+//				System.out.println("검색어 : "+search);
 
 				if(request.getParameter("cpage")!=null) {
 					currentpage = Integer.parseInt(request.getParameter("cpage"));
@@ -531,7 +531,7 @@ public class StoreController extends HttpServlet {
 					currentpage = 1;
 				}
 
-				System.out.println("현재 페이지 : "+currentpage);
+//				System.out.println("현재 페이지 : "+currentpage);
 
 				// 검색방식에 따라 네비 갯수 변경
 				if(searchedBy.equals("mainSearch")) {
@@ -542,8 +542,8 @@ public class StoreController extends HttpServlet {
 					start_Record_Row_Num = end_Record_Row_Num - (Settings.SEARCH_STORE_TO_MAP_RECORD_COUNT_PER_PAGE-1);
 				}
 
-				System.out.println("시작넘버 : "+start_Record_Row_Num);
-				System.out.println("끝넘버 : "+end_Record_Row_Num);
+//				System.out.println("시작넘버 : "+start_Record_Row_Num);
+//				System.out.println("끝넘버 : "+end_Record_Row_Num);
 
 				List<StoreDTO> search_store_list = StoreDAO.getInstance().searchStore_BySearchFilter(search, start_Record_Row_Num, end_Record_Row_Num,
 						sortMethod, cost_range, food_category_korean, food_category_western, food_category_chinese, food_category_japanese, food_category_asian,
@@ -556,7 +556,7 @@ public class StoreController extends HttpServlet {
 				// 리스트 썸네일 추가
 				ArrayList<PhotoDTO> search_store_imgList = PhotoDAO.getInstance().selectSearchStoreThumbnailByStoreID(search_store_list);
 
-				System.out.println("리스트 사이즈 : "+search_store_list.size());
+//				System.out.println("리스트 사이즈 : "+search_store_list.size());
 
 				int userno = 0;
 				if(request.getSession().getAttribute("userno")!=null) {
@@ -564,7 +564,7 @@ public class StoreController extends HttpServlet {
 				}
 				List<FavoritePageDTO> Favorite_list = FavoriteStoreDAO.getInstance().isFavoriteStore(search_store_list,userno);
 
-				System.out.println("===================");
+//				System.out.println("===================");
 
 				request.setAttribute("search_store_list", search_store_list);
 				request.setAttribute("search_store_list_navi", search_store_list_navi);
@@ -590,7 +590,7 @@ public class StoreController extends HttpServlet {
 
 				int result = FavoriteStoreDAO.getInstance().addFavoriteStore(storeID, userno);
 				if(result>0) {
-					System.out.println("즐찾 등록 성공");
+//					System.out.println("즐찾 등록 성공");
 					response.getWriter().append("true");
 				}
 			}
@@ -603,7 +603,7 @@ public class StoreController extends HttpServlet {
 
 				int result = FavoriteStoreDAO.getInstance().deleteFavoriteStore(storeID, userno);
 				if(result>0) {
-					System.out.println("즐찾 해제 성공");
+//					System.out.println("즐찾 해제 성공");
 					response.getWriter().append("true");
 				}
 			}
@@ -617,7 +617,7 @@ public class StoreController extends HttpServlet {
 					currentpage = Integer.parseInt(request.getParameter("cpage"));
 				}
 
-				System.out.println("현재 페이지 : "+currentpage);
+//				System.out.println("현재 페이지 : "+currentpage);
 
 				// 검색방식에 따라 네비 갯수 변경
 				int end_Record_Row_Num = currentpage * Settings.MYPAGE_LIST_RECORD_COUNT_PER_PAGE;
@@ -651,7 +651,7 @@ public class StoreController extends HttpServlet {
 						}
 					}
 				}
-				System.out.println(set.size());
+//				System.out.println(set.size());
 				Iterator<Integer> it = set.iterator();
 				StringBuilder sb = new StringBuilder();
 				while(it.hasNext()) {

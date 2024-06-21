@@ -27,7 +27,7 @@ public class FullReviewReplyController extends HttpServlet {
 
 		String cmd = request.getRequestURI();
 		FullReviewReplyDAO frrdao = FullReviewReplyDAO.getInstance();
-		System.out.println(cmd);
+//		System.out.println(cmd);
 		
 		try {
 			if (cmd.equals("/write.fullreviewreply")) {
@@ -37,7 +37,7 @@ public class FullReviewReplyController extends HttpServlet {
 				int userno = Integer.parseInt(request.getParameter("userno"));
 				int reviewid = Integer.parseInt(request.getParameter("reviewid"));
 
-				System.out.println(userno+"가"+reviewid+"에 입력한 덧글"+body);
+//				System.out.println(userno+"가"+reviewid+"에 입력한 덧글"+body);
 				
 				frrdao.addReply(body, userno, reviewid);
 
@@ -47,14 +47,13 @@ public class FullReviewReplyController extends HttpServlet {
 
 				int reviewid = Integer.parseInt(request.getParameter("reviewid"));
 				int commentid = Integer.parseInt(request.getParameter("commentid"));
-				System.out.println();
-				
+
 				int result = frrdao.deleteReply(commentid);
 
 				if (result == 0) {
-					System.out.println(reviewid+"게시글의 "+ commentid + "댓글 삭제 실패");
+//					System.out.println(reviewid+"게시글의 "+ commentid + "댓글 삭제 실패");
 				} else {
-					System.out.println(reviewid+"게시글의 "+ commentid + "댓글 삭제 성공");
+//					System.out.println(reviewid+"게시글의 "+ commentid + "댓글 삭제 성공");
 				}
 
 				response.sendRedirect("/content.fullreview?reviewid="+reviewid);
@@ -64,14 +63,14 @@ public class FullReviewReplyController extends HttpServlet {
 				body = SecurityUtils.XSSCheck(body);
 				int reviewid = Integer.parseInt(request.getParameter("reviewid"));
 				int commentid = Integer.parseInt(request.getParameter("commentid")); 
-				System.out.println(body+"/"+commentid);
+//				System.out.println(body+"/"+commentid);
 
 				int result = frrdao.updateReply(body, commentid);
 				
 				if (result == 0) {
-					System.out.println(reviewid + "댓글 수정 실패");
+//					System.out.println(reviewid + "댓글 수정 실패");
 				} else {
-					System.out.println(reviewid + "댓글 수정 성공");
+//					System.out.println(reviewid + "댓글 수정 성공");
 				}
 				response.sendRedirect("/content.fullreview?reviewid="+reviewid);
 			}

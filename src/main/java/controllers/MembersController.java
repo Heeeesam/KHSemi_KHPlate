@@ -33,10 +33,16 @@ import dto.PhotoDTO;
 @WebServlet("*.members")
 public class MembersController extends HttpServlet {
 
+	/**
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf8"); 
 		String cmd = request.getRequestURI();
-		System.out.println(cmd);
+//		System.out.println(cmd);
 		Gson g = new Gson();
 
 		try {
@@ -54,12 +60,12 @@ public class MembersController extends HttpServlet {
 				int result = dao.join(userid,sha512pw,name,email,classes);
 				
 				if(result>0) {
-					System.out.println(userid +" 회원가입 완료");
+//					System.out.println(userid +" 회원가입 완료");
 					request.setAttribute("userid", userid);
 					request.setAttribute("email", email);
 					request.getRequestDispatcher("/emailSend.members").forward(request, response);
 				}else {
-					System.out.println(userid +" 회원가입 실패");
+//					System.out.println(userid +" 회원가입 실패");
 				}
 
 				// 인증 이메일 보내는 Controller
@@ -67,7 +73,7 @@ public class MembersController extends HttpServlet {
 				String userid = (String) request.getAttribute("userid");
 				String email = (String) request.getAttribute("email");
 
-				String host = "http://ec2-15-165-121-165.ap-northeast-2.compute.amazonaws.com/";
+				String host = "http://localhost/";
 				String from = "khplatesemi@gmail.com";
 				String to = email;
 				String subject ="이메일 인증 입니다";
@@ -117,9 +123,9 @@ public class MembersController extends HttpServlet {
 				String userid = dao.getUserEmailVerified(code);
 				
 				if(userid.equals("")) {
-					System.out.println("인증실패");
+//					System.out.println("인증실패");
 				}else {
-					System.out.println("인증성공");
+//					System.out.println("인증성공");
 					
 					// 이메일 인증 확인 dao
 					int result = dao.updateuserEmailChecked(userid);
@@ -191,7 +197,7 @@ public class MembersController extends HttpServlet {
 
 				String realPath = request.getServletContext().getRealPath("mypagepic");
 				int maxSize = 1024 * 1024 * 10;
-				System.out.println(realPath);
+//				System.out.println(realPath);
 				File realPathFile = new File(realPath);
 				if(!realPathFile.exists()) {
 					realPathFile.mkdir();
@@ -199,19 +205,19 @@ public class MembersController extends HttpServlet {
 				MultipartRequest multi = new MultipartRequest(request, realPath, maxSize, "utf8", new DefaultFileRenamePolicy());
 
 				int userNo= Integer.parseInt(multi.getParameter("userNo"));
-				System.out.println("유저넘버"+userNo);
+//				System.out.println("유저넘버"+userNo);
 				Enumeration<String> names = multi.getFileNames();
 				
 				PhotoDAO.getInstance().deleteByuserno(userNo);
 				
 				while(names.hasMoreElements()) {
 					String fileName = names.nextElement();
-					System.out.println(fileName);
+//					System.out.println(fileName);
 					if(multi.getFile(fileName) != null){
 						String oriName = multi.getOriginalFileName(fileName);
 						String sysName = multi.getFilesystemName(fileName);
 						PhotoDAO.getInstance().insertByuserNo(oriName,sysName,userNo);
-						System.out.println("DB입력됨");
+//						System.out.println("DB입력됨");
 					}
 				}
 				
@@ -249,7 +255,7 @@ public class MembersController extends HttpServlet {
 				boolean idCheck = dao.isIdExist(userId);
 				
 				if(!idCheck) {
-					System.out.println("아이디가 틀렸습니다.");
+//					System.out.println("아이디가 틀렸습니다.");
 					response.getWriter().append("1");
 					return;
 				}
@@ -258,7 +264,7 @@ public class MembersController extends HttpServlet {
 				boolean pwCheck = dao.isPwExist(userId, EncryptionPw);
 				
 				if(!pwCheck) {
-					System.out.println("비밀번호가 틀렸습니다.");
+//					System.out.println("비밀번호가 틀렸습니다.");
 					response.getWriter().append("2");
 					return;
 					
@@ -266,11 +272,11 @@ public class MembersController extends HttpServlet {
 				boolean emailVerify = dao.emailVerify(userId);
 				
 				if(!emailVerify) {	
-					System.out.println("이메일 미인증");
+//					System.out.println("이메일 미인증");
 					response.getWriter().append("3");
 					return;
 				}else {
-					System.out.println("로그인에 성공하였습니다.");
+//					System.out.println("로그인에 성공하였습니다.");
 					request.getSession().setAttribute("userId", userId);
 					int userno = dao.getUserno(userId);
 					request.getSession().setAttribute("userno", userno);
@@ -297,7 +303,7 @@ public class MembersController extends HttpServlet {
 			
 			else if(cmd.equals("/IdCheck.members")) {
 				String id = request.getParameter("id");
-				System.out.println("입력 id = " + id);
+//				System.out.println("입력 id = " + id);
 				boolean result;
 				if(id.isBlank()) {
 					result = true;
@@ -340,22 +346,22 @@ public class MembersController extends HttpServlet {
 			}else if(cmd.equals("/loginByNaver.members")) {
 				String naverid = request.getParameter("naverid");
 				String userId = dao.searchNaverID(naverid);
-				System.out.println(userId);
+//				System.out.println(userId);
 				// 네이버 로그인이 처음인지 확인
 				if(userId==null||userId.isBlank()) {
 
-					System.out.println("(네이버)미 회원가입 사용자");
+//					System.out.println("(네이버)미 회원가입 사용자");
 					response.getWriter().append("1");
 					return;
 				}else {
 					// 이메일 체크
 					boolean emailVerify = dao.emailVerify(userId);
 					if(!emailVerify) {	
-						System.out.println("(네이버)이메일 미인증");
+//						System.out.println("(네이버)이메일 미인증");
 						response.getWriter().append("2");
 						return;
 					}else {
-						System.out.println("(네이버)로그인 성공");
+//						System.out.println("(네이버)로그인 성공");
 						request.getSession().setAttribute("userId", userId);
 						int userno = dao.getUserno(userId);
 						request.getSession().setAttribute("userno", userno);
@@ -370,18 +376,18 @@ public class MembersController extends HttpServlet {
 				String userId = dao.searchKakaoID(kakaoid);
 				// 네이버 로그인이 처음인지 확인
 				if(userId==null||userId.isBlank()) {
-					System.out.println("(카카오)미 회원가입 사용자");
+//					System.out.println("(카카오)미 회원가입 사용자");
 					response.getWriter().append("1");
 					return;
 				}else {
 					// 이메일 체크
 					boolean emailVerify = dao.emailVerify(userId);
 					if(!emailVerify) {	
-						System.out.println("(카카오)이메일 미인증");
+//						System.out.println("(카카오)이메일 미인증");
 						response.getWriter().append("2");
 						return;
 					}else {
-						System.out.println("(카카오)로그인 성공");
+//						System.out.println("(카카오)로그인 성공");
 						request.getSession().setAttribute("userId", userId);
 						int userno = dao.getUserno(userId);
 						request.getSession().setAttribute("userno", userno);
@@ -410,12 +416,12 @@ public class MembersController extends HttpServlet {
 				}
 				
 				if(result>0) {
-					System.out.println(userid +" 회원가입 완료");
+//					System.out.println(userid +" 회원가입 완료");
 					request.setAttribute("userid", userid);
 					request.setAttribute("email", email);
 					request.getRequestDispatcher("/emailSend.members").forward(request, response);
 				}else {
-					System.out.println(userid +" 회원가입 실패");
+//					System.out.println(userid +" 회원가입 실패");
 				}
 			}
 			
